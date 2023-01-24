@@ -263,23 +263,15 @@ public class DogRegistry {
     private int findSmallestDog(int pointer) {
         int smallestDogFound = pointer;
         for (; pointer < dogList.size(); pointer++) {
-            if (getTailLength(pointer) < getTailLength(smallestDogFound))
+            if (dogList.get(pointer).getTailLength() < dogList.get(smallestDogFound).getTailLength())
                 smallestDogFound = pointer;
 
-            if (getTailLength(pointer) == getTailLength(smallestDogFound)) {
-                if (getName(pointer).compareToIgnoreCase(getName(smallestDogFound)) < 0)
+            if (dogList.get(pointer).getTailLength() == dogList.get(smallestDogFound).getTailLength()) {
+                if (dogList.get(pointer).getName().compareToIgnoreCase(dogList.get(smallestDogFound).getName()) < 0)
                     smallestDogFound = pointer;
             }
         }
         return smallestDogFound;
-    }
-
-    private double getTailLength(int i) {
-        return dogList.get(i).getTailLength();
-    }
-
-    private String getName(int i) {
-        return dogList.get(i).getName();
     }
 
     private void sortDogList() {
