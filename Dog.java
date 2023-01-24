@@ -64,7 +64,7 @@ public class Dog {
     public void setOwner(Owner owner) {
         if (owner == null)
             return;
-        if (!owner.getOwnedDogs().isDogInList(this))
+        if (!owner.isDogOwned(this))
             owner.addDog(this);
         if (this.owner == null)
             this.owner = owner;

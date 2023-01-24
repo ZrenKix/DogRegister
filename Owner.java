@@ -25,18 +25,14 @@ public class Owner {
     }
 
     public void removeDogOwnership(Dog dog) {
-        if (!this.ownsDog(dog) || dog.getOwner() == null)
+        if (!this.isDogOwned(dog) || dog.getOwner() == null)
             return;
         ownedDogs.removeDogFromList(dog);
         if (dog.getOwner() == this)
             dog.removeOwner();
     }
 
-    public DogList getOwnedDogs() {
-        return ownedDogs;
-    }
-
-    public boolean ownsDog(Dog dog) {
+    public boolean isDogOwned(Dog dog) {
         return ownedDogs.isDogInList(dog);
     }
 

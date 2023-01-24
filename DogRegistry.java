@@ -63,8 +63,7 @@ public class DogRegistry {
             case "remove owned dog" -> removeDogFromOwner();
             case "remove owner" -> deleteOwner();
             case "help" -> printMenu();
-            case "exit" -> {
-            }
+            case "exit" -> {}
             default -> System.out.println("Error: Command doesn't exist");
         }
     }
@@ -257,11 +256,11 @@ public class DogRegistry {
         return null;
     }
 
-    public void swapDogPosition(int firstDog, int secondDog) {
+    private void swapDogPosition(int firstDog, int secondDog) {
         Collections.swap(dogList, firstDog, secondDog);
     }
 
-    public int findSmallestDog(int pointer) {
+    private int findSmallestDog(int pointer) {
         int smallestDogFound = pointer;
         for (; pointer < dogList.size(); pointer++) {
             if (getTailLength(pointer) < getTailLength(smallestDogFound))
@@ -284,9 +283,10 @@ public class DogRegistry {
     }
 
     private void sortDogList() {
-        for (int i = 0; i < dogList.size() - 1; i++)
-            if (i != findSmallestDog(i))
-                swapDogPosition(i, findSmallestDog(i));
+        for (int i = 0; i < dogList.size() - 1; i++) {
+            int smallestDog = findSmallestDog(i);
+            if (i != smallestDog)
+                swapDogPosition(i, smallestDog);
+        }
     }
-
 }
